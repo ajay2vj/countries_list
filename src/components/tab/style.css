@@ -1,0 +1,28 @@
+
+.tab-header-new {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  list-style: none;
+  line-height: 25px;
+  gap: 1rem;
+}
+.tab-header-new li {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 21px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0px 15px 0px 15px;
+}
+
+.tab-header-new li.active {
+  color: #001EBA;
+  border-bottom: 2px solid #001EBA;
+}
+.borderclass {
+  padding: 0px 0px 15px 0px;
+  margin-bottom: 20px;
+}
