@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
-import './App.css';
-import { Button, Drawer } from 'antd';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from './pages/home';
+import SignIn from './pages/signin';
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const showDrawer = () => {
-    setOpen(true);
-  };
-  const onClose = () => {
-    setOpen(false);
-  };
+  
   return (
-    <>
-      <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button>
-      <Drawer title="Basic Drawer" placement="right" onClose={onClose} open={open}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={SignIn} />
+        <Route path="/home" component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
