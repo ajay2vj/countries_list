@@ -1,12 +1,19 @@
 import React from 'react';
-import { Input, Typography, Checkbox, Button } from 'antd';
+import { Input, Typography, Checkbox } from 'antd';
 import './style.css';
 import google from '../../assets/google.png'
 import facebook from '../../assets/facebook.png'
 import tw from '../../assets/tw.png'
 import linkedin from '../../assets/linkedin.png'
+import { useForm, Controller } from "react-hook-form";
+import ErrorText from '../Errortext';
+
 function Form(){
   const { Title } = Typography;
+  const { register, handleSubmit, control, formState: { errors } } = useForm();
+  const onSubmit = ()=> {
+    window.location.href = "/home"
+  }
   return(
     <div className='p-5'>
       <Title
@@ -19,19 +26,58 @@ function Form(){
         <p className='font-medium'>New user?</p>
         <p className='text-blue-500 font-normal'>Create an account</p>
       </div>
-      <form>
-        <div className='flex flex-col gap-5'>
-          <Input placeholder='Username or email' />
-          <Input placeholder='Password' />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='flex flex-col gap-3'>
+          <Controller
+            name="name"
+            {...register('name', {
+              required: 'Name cannot be empty',
+            })}
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, ref }) => (
+              <Input
+                name="name"
+                value={value}
+                ref={ref}
+                placeholder='Username or email'
+                onChange={(e) => {
+                  onChange(e.target.value);
+                }}
+              />
+            )}
+          />
+          <ErrorText errorMsg={errors.name && errors.name.message} />
+          <Controller
+            name="pass"
+            {...register('pass', {
+              required: 'Password cannot be empty',
+            })}
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, ref }) => (
+              <Input
+                name="pass"
+                value={value}
+                ref={ref}
+                placeholder='password'
+                onChange={(e) => {
+                  onChange(e.target.value);
+                }}
+              />
+            )}
+          />
+          <ErrorText errorMsg={errors.pass && errors.pass.message} />
         </div>
         <div className='py-2'>
           <Checkbox>Keep me signed in</Checkbox>
         </div>
-        <Button
-          onClick={()=> {}}
+        <button
+          type='submit'
+          onClick={()=> handleSubmit(onSubmit)}
           className='py-3 w-full'
         >Sign In
-        </Button>
+        </button>
       </form>
       <div className='py-4'>
         <div className='hline'><span className='font-medium'>Or Sign In With</span></div>
