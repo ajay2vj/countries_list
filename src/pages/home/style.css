@@ -1,0 +1,31 @@
+.screen-class{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.screen-class2 {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.tab-screen {
+  display: block;
+}
+.tab-nav {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .screen-class{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+  .screen-class2 {
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+  }
+  .tab-screen {
+    display: none !important;
+  }
+  .tab-nav {
+    display: block !important;
+    margin-top: 8px;
+  }
+}

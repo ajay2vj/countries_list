@@ -16,11 +16,13 @@
   font-size: 14px;
   font-weight: 600;
   padding: 0px 15px 0px 15px;
+  user-select: none;
 }
 
 .tab-header-new li.active {
-  color: #001EBA;
-  border-bottom: 2px solid #001EBA;
+  color: #3E3E3E;
+  border-bottom: 2px solid #3E3E3E;
+  user-select: none;
 }
 .borderclass {
   padding: 0px 0px 15px 0px;

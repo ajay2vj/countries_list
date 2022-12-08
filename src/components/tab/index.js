@@ -9,7 +9,7 @@ function TabView({setClickedTab, clickedTab}) {
   ]
   return (
     <div className='flex justify-between borderclass'>
-      <div className='flex'>
+      <div className='flex gap-7'>
         {
           tabList?.map((tab, index) => (
             <ul key={index} onClick={() => setClickedTab(tab)} className='tab-header-new'>

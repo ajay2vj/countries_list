@@ -4,11 +4,22 @@ import './index.css';
 import App from './App';
 import 'antd/dist/antd.min.css';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const Routing = () => {
+  const queryClient = new QueryClient();
+
+  return(
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Routing />
   </React.StrictMode>
 );
 
