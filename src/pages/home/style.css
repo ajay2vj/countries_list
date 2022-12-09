@@ -28,4 +28,15 @@
     display: block !important;
     margin-top: 8px;
   }
+  .tab-header-new li.active {
+    border-bottom: none !important;
+  }
+  .mobile-nav {
+    display: inline !important;
+  }
+  button.ant-drawer-close {
+    background: none !important;
+    color: #000 !important;
+    border: 0px solid !important;
+  }
 }

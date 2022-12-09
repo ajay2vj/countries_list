@@ -1,4 +1,4 @@
-import { Typography } from 'antd';
+import { Typography, Drawer } from 'antd';
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useQuery } from 'react-query';
@@ -20,6 +20,14 @@ function Home(){
   }
   const { data } = useQuery('getData', getData)
   const { Title } = Typography;
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+  
   return(
     <div className='p-8'>
       <div className='flex justify-between screen-class2'>
@@ -28,12 +36,21 @@ function Home(){
           <Tab
             setClickedTab={setTab}
             clickedTab={tab}
+            setOpen={setOpen}
           />
         </div>
         <div className='tab-nav'>
           <FaBars 
             className='cursor-pointer'
+            onClick={showDrawer}
           />
+          <Drawer title="Countries" placement="right" onClose={onClose} open={open}>
+            <Tab
+              setOpen={setOpen}
+              setClickedTab={setTab}
+              clickedTab={tab}
+            />
+          </Drawer>
         </div>
       </div>
       <div className='screen-class'>
