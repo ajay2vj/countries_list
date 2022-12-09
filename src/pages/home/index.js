@@ -18,7 +18,7 @@ function Home(){
       // console.log(err)
     }
   }
-  const { data } = useQuery('getData', getData)
+  const { data, isLoading } = useQuery('getData', getData)
   const { Title } = Typography;
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -56,17 +56,25 @@ function Home(){
       <div className='screen-class'>
         <Container>
           <Row>
-            {tab === 'All' && (
+            {isLoading ? (
+              <div className="flex justify-center">
+                <p className='font-bold text-2xl italic'>Loading....</p>
+              </div>
+            ) : (
               <>
-                {data?.data?.map((item, idx)=>(
-                  <Col lg={{span: 6}} md={4} key={idx} className="mb-4">
-                    <Box
-                      svgCountry={item?.flag}
-                      countries={item?.name}
-                      region={item?.region}
-                    />
-                  </Col>
-                ))}
+              {tab === 'All' && (
+                <>
+                  {data?.data?.map((item, idx)=>(
+                    <Col lg={{span: 6}} md={4} key={idx} className="mb-4">
+                      <Box
+                        svgCountry={item?.flag}
+                        countries={item?.name}
+                        region={item?.region}
+                      />
+                    </Col>
+                  ))}
+                </>
+              )}
               </>
             )}
             {tab === 'Asia' && (

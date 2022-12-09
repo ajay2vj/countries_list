@@ -58,6 +58,7 @@ function Form(){
             render={({ field: { onChange, value }, ref }) => (
               <Input
                 name="pass"
+                type='password'
                 value={value}
                 ref={ref}
                 placeholder='password'
